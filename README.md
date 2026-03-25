@@ -1,158 +1,158 @@
-# RPA de WhatsApp para Análisis de Ventas 📊
+<a id="readme-top"></a>
 
-Aplicación en Python que carga datos de ventas, realiza un análisis consolidado, genera gráficas y envía un reporte por WhatsApp a través de Twilio.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<h3 align="center">WhatsApp Sales Analysis RPA 📊</h3>
 
-- Carga y validación de datos desde Excel (`data/Ventas_Fundamentos.xlsx`)
-- Métricas clave y top de modelos, sedes y canales
-- Generación de gráficas en `outputs/graphs/`
-- Envío de reporte vía WhatsApp con Twilio
-- Hosting opcional de imágenes en imgbb (URLs públicas para adjuntar en WhatsApp)
-- Fallback automático a simulación si Twilio retorna límite diario (error `63038`)
+  <p align="center">
+    Automates sales data analysis, visual reporting, and WhatsApp notification delivery via Twilio.
+  </p>
+</div>
 
----
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-## Requisitos previos ⚙️
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-- Python 3.10 o superior
-- Windows recomendado (probado en PowerShell). Funciona en otros SO con Python.
-- Cuenta de Twilio con WhatsApp habilitado (número de envío) – para envíos reales
-- Cuenta en imgbb (opcional) para alojar las imágenes
+This application loads sales data, performs a consolidated analysis, generates metric charts, and sends a report via WhatsApp through Twilio.
 
-Dependencias se instalan desde `requirements.txt`.
+Key Features:
+* Data loading and validation from Excel (`data/Ventas_Fundamentos.xlsx`)
+* Key metrics and top performing models, locations, and channels
+* Automated graph generation in `outputs/graphs/`
+* WhatsApp report delivery with Twilio
+* Optional image hosting via imgbb
+* Automatic fallback to simulation if Twilio limits are reached
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Instalación 📦
-En **PowerShell** (Windows):
+### Built With
 
-```powershell
-# 1) Clonar el repositorio
-# git clone https://github.com/<tu-usuario>/<repo>.git
-# cd <repo>
+* [![Python][Python-badge]][Python-url]
+* [![Pandas][Pandas-badge]][Pandas-url]
+* [![Matplotlib][Matplotlib-badge]][Matplotlib-url]
+* [![Twilio][Twilio-badge]][Twilio-url]
 
-# 2) Crear y activar entorno virtual (opcional pero recomendado)
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# 3) Instalar dependencias
-pip install -r requirements.txt
+<!-- GETTING STARTED -->
+## Getting Started
 
-# Alternativa: instalar con script auxiliar
-python install_dependencies.py
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+* Python 3.10 or superior
+* Windows recommended (PowerShell tested)
+* Twilio account with WhatsApp enabled (for real delivery)
+* imgbb account (optional) for image hosting
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/jerichd4c/car-business-RPA.git
+   ```
+2. Create and activate virtual environment
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+3. Install dependencies
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. Configure environment variables
+   Copy `whatsapp_config.env.sample` to `whatsapp_config.env` and fill in your credentials.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+1. Create or verify sample data:
+   ```powershell
+   python create_sample_data.py
+   ```
+
+2. Execute the RPA process:
+   ```powershell
+   python main.py
+   ```
+
+The flow performs data validation, analysis, visualization, and sending (or simulation).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- PROJECT STRUCTURE -->
+## Project Structure
+
 ```
-
----
-
-## Configuración 🔧
-
-Se usa python-dotenv y un archivo `whatsapp_config.env` (no se versiona). Toma como base `whatsapp_config.env.sample`.
-
-Variables principales:
-
-- `WHATSAPP_DESTINY` — Número E.164 de destino (ej: `+1234567890`)
-- `TWILIO_ACCOUNT_SID` — SID de la cuenta Twilio
-- `TWILIO_AUTH_TOKEN` — Token de autenticación Twilio
-- `TWILIO_WHATSAPP_FROM` — Número WhatsApp de Twilio en formato E.164 (sin el prefijo `whatsapp:`)
-- `IMGBB_API_KEY` (opcional) — API key de imgbb para subir imágenes
-- `WHATSAPP_MAX_RETRIES` (opcional) — Reintentos en fallas transitorias (default `3`)
-- `WHATSAPP_WAIT_TIME` (opcional) — Espera entre reintentos en segundos (default `5`)
-- `WHATSAPP_SIMULATE` (opcional) — `true/false` para ejecutar en modo simulación (no usa Twilio). Cuando está activo, el mensaje se escribe en `outputs/simulation_message.txt` y la bitácora en `outputs/simulation_log.txt`. Alternativamente, puedes pasar `--simulate` desde la línea de comandos.
-
----
-
-## Puesta en marcha rápida 🚀
-
-1) Crear o verificar los datos de ejemplo (si no tienes el Excel):
-
-```powershell
-python create_sample_data.py
-```
-
-2) Ejecutar el proceso RPA:
-
-```powershell
-python main.py
-```
-
-El flujo realiza:
-- Carga y validación de `data/Ventas_Fundamentos.xlsx`
-- Análisis y métricas (clientes, ventas, topes)
-- Generación de gráficas en `outputs/graphs/`
-- Envío del reporte por WhatsApp (Twilio). Si el límite diario está excedido, se simula y se incluyen las URLs de imgbb.
-
----
-
-## Flujo de trabajo 🧭
-
-1) Cargar y validar datos (estructura esperada por `utils/data_loader.py`).
-2) Analizar datos (cálculos en `utils/analyzer.py`).
-3) Generar gráficas (salvan en `outputs/graphs/` con `utils/visualizer.py`).
-4) Enviar reporte por WhatsApp (texto + URLs de imágenes) con `utils/whatsapp_sender.py`.
-
----
-
-## Estructura del proyecto 📁
-
-```
-main.py                         # Orquestación del flujo
-create_sample_data.py           # Genera Excel de ejemplo si no existe
-requirements.txt                # Dependencias
-whatsapp_config.env.sample      # Variables de entorno (plantilla)
-
+main.py                         # Flow orchestration
+create_sample_data.py           # Sample Excel generator
 utils/
-  data_loader.py                # Carga/validación de datos
-  analyzer.py                   # Métricas y agregados
-  visualizer.py                 # Gráficas a outputs/graphs
-  whatsapp_sender.py            # Envío WhatsApp con Twilio + fallback simulación
-  image_uploader.py             # Subida a imgbb
-
-experimental/
-  whatsapp_sender_experimental.py  # Implementaciones archivadas (Selenium/pywhatkit) – no producción
-
+  data_loader.py                # Data loading/validation
+  analyzer.py                   # Metrics calculations
+  visualizer.py                 # Graph generation
+  whatsapp_sender.py            # WhatsApp delivery & simulation
+  image_uploader.py             # imgbb integration
 outputs/
-  graphs/                       # PNG/JPG de las visualizaciones
-  simulation_log.txt            # Bitácora de simulaciones
-  simulation_message.txt        # Cuerpo de mensaje simulado
+  graphs/                       # Generated PNG/JPG visualizations
+  simulation_log.txt            # Simulation history
 ```
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Salidas 📤
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
 
-- Gráficas: `outputs/graphs/*.png|jpg|jpeg`.
-- Mensaje simulado: `outputs/simulation_message.txt`.
-- Log de simulación: `outputs/simulation_log.txt` (histórico con timestamp).
+* [Twilio](https://www.twilio.com/) for WhatsApp delivery
+* [pandas](https://pandas.pydata.org/) and [matplotlib](https://matplotlib.org/) for analysis and visualization
+* [imgbb](https://api.imgbb.com/) for image hosting
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Twilio y límites ⏳
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/jerichd4c/car-business-RPA.svg?style=for-the-badge
+[contributors-url]: https://github.com/jerichd4c/car-business-RPA/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jerichd4c/car-business-RPA.svg?style=for-the-badge
+[forks-url]: https://github.com/jerichd4c/car-business-RPA/network/members
+[stars-shield]: https://img.shields.io/github/stars/jerichd4c/car-business-RPA.svg?style=for-the-badge
+[stars-url]: https://github.com/jerichd4c/car-business-RPA/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jerichd4c/car-business-RPA.svg?style=for-the-badge
+[issues-url]: https://github.com/jerichd4c/car-business-RPA/issues
+[license-shield]: https://img.shields.io/github/license/jerichd4c/car-business-RPA.svg?style=for-the-badge
+[license-url]: https://github.com/jerichd4c/car-business-RPA/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/jerichd4c
 
-- Si Twilio retorna `63038` (límite diario), el sistema:
-  1) Detiene reintentos inútiles.
-  2) Sube las gráficas a imgbb (si `IMGBB_API_KEY` está configurada) y arma el mensaje con todas las URLs.
-  3) Escribe el mensaje simulado en `outputs/simulation_message.txt` y la bitácora en `outputs/simulation_log.txt`.
-
-Para levantar el límite: espera el reinicio de la ventana de 24h o contacta a Soporte de Twilio para aumentar el cupo (cuenta verificada, caso de uso, volúmenes esperados, opt-in, etc.).
-
----
-
-## Solución de problemas 🧩
-
-- WhatsApp no envía (Twilio): verifica credenciales, que el número tenga WhatsApp habilitado y que no estés en sandbox. Revisa límites de cuenta.
-- Sin imágenes en el mensaje: asegúrate de tener archivos en `outputs/graphs/` y configurar `IMGBB_API_KEY`.
-- Error al leer Excel: manten `openpyxl >= 3.1.0`. El archivo de ejemplo se genera con `create_sample_data.py`.
-
----
-
-## Notas de seguridad 🔒
-
-- `whatsapp_config.env` está ignorado por Git. Usa la plantilla `whatsapp_config.env.sample` y no subas credenciales.
-- Archivos generados en `outputs/` y `data/` están en `.gitignore` para evitar subir datos sensibles.
-
----
-
-## Créditos 🙌
-
-- [Twilio](https://www.twilio.com/) para el envío de WhatsApp
-- [pandas](https://pandas.pydata.org/) y [matplotlib](https://matplotlib.org/) para análisis y visualización
-- [imgbb](https://api.imgbb.com/) para alojar imágenes públicas
+[Python-badge]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[Python-url]: https://www.python.org/
+[Pandas-badge]: https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white
+[Pandas-url]: https://pandas.pydata.org/
+[Matplotlib-badge]: https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black
+[Matplotlib-url]: https://matplotlib.org/
+[Twilio-badge]: https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=Twilio&logoColor=white
+[Twilio-url]: https://www.twilio.com/
