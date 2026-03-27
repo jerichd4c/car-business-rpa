@@ -1,6 +1,6 @@
 <a id="readme-top"></a>
 
-<h3 align="center">WhatsApp Sales Analysis RPA 📊</h3>
+<h3 align="center">WhatsApp Sales Analysis RPA</h3>
 
   <p align="center">
     Automates sales data analysis, visual reporting, and WhatsApp notification delivery via Twilio.
