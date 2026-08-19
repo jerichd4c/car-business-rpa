@@ -1,5 +1,11 @@
 <a id="readme-top"></a>
 
+<!-- LANGUAGE BADGE -->
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" width="200" height="40">
+</div>
+
+
 <h3 align="center">WhatsApp Sales Analysis RPA</h3>
 
   <p align="center">
@@ -165,6 +171,12 @@ outputs/
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul><a id="readme-top"></a>
+
+<!-- LANGUAGE BADGE -->
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" width="200" height="40">
+</div>
+
 
 <h3 align="center">WhatsApp Sales Analysis RPA 📊</h3>
 
