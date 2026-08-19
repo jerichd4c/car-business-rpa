@@ -7,11 +7,6 @@
   </p>
 </div>
 
-  <p align="center">
-    Automates sales data analysis, visual reporting, and WhatsApp notification delivery via Twilio.
-  </p>
-</div>
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
