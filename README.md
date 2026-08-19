@@ -1,8 +1,10 @@
 <a id="readme-top"></a>
 
-<!-- LANGUAGE BADGE -->
+<!-- PROJECT LOGO -->
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" width="200" height="40">
+  <a href="https://github.com/jerichd4c/car-business-rpa">
+    <img src="https://raw.githubusercontent.com/jerichd4c/ReflexJDBC/main/python_logo.svg" alt="Logo" width="80" height="80">
+  </a>
 </div>
 
 
@@ -172,9 +174,11 @@ outputs/
       <a href="#getting-started">Getting Started</a>
       <ul><a id="readme-top"></a>
 
-<!-- LANGUAGE BADGE -->
+<!-- PROJECT LOGO -->
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" width="200" height="40">
+  <a href="https://github.com/jerichd4c/car-business-rpa">
+    <img src="https://raw.githubusercontent.com/jerichd4c/ReflexJDBC/main/python_logo.svg" alt="Logo" width="80" height="80">
+  </a>
 </div>
 
 
