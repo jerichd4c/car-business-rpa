@@ -7,21 +7,6 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details><a id="readme-top"></a>
-
-<div align="center">
-<h3 align="center">WhatsApp Sales Analysis RPA 📊</h3>
-
-  <p align="center">
-    Automates sales data analysis, visual reporting, and WhatsApp notification delivery via Twilio.
-  </p>
-</div>
-
-<!-- TABLE OF CONTENTS --><a id="readme-top"></a>
-
-<h3 align="center">WhatsApp Sales Analysis RPA 📊</h3>
-
   <p align="center">
     Automates sales data analysis, visual reporting, and WhatsApp notification delivery via Twilio.
   </p>
